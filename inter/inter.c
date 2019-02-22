@@ -1,34 +1,61 @@
 #include <unistd.h>
+#include <string.h>
+#include <stdio.h>
 
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);
 }
 
-void	inter(char *str1, char *str2)
+int		ft_strlen(char *str)
 {
 	int i;
-	int j;
 
 	i = 0;
-	j = 0;
-	while (str1[i])
+	while (str[i])
+		i++;
+	return (i);
+}
+
+int		duplicate(int index, char *str)
+{
+	int i;
+	i = 0;
+	while (i < index)
 	{
-		if (str1[i] == str2[j])
-			ft_putchar(str1[i]);
-		j++;
+		if (str[i] == str[index])
+			return (1);
 		i++;
 	}
+	return (0);
 }
 
 int		main(int argc, char **argv)
 {
+	int i, j;
+	i = 0;
 	if (argc == 3)
 	{
-		inter(argv[1], argv[2]);
-		ft_putchar('\n');
+		while (argv[1][i])
+		{
+			if (duplicate(i, argv[1]) == 0)
+			{
+				j = 0;
+				while (argv[2][j])
+				{
+					if (argv[2][j] == argv[1][i])
+					{
+						ft_putchar(argv[1][i]);
+						break;
+						
+					}
+					j++;
+				}
+			}
+			i++;
+		}
 	}
 	else
-		ft_putchar('\n');
+		return (-1);
 	return (0);
 }
