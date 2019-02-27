@@ -27,7 +27,7 @@ int   main(int argc, char **argv)
     {
         while (argv[1][i])
         {
-            if (check_for_dup(argv[1], i) == -1)
+            if (check_for_dup(argv[1], i) == 0)
                 i++;
             j = 0;
             while (argv[2][j])

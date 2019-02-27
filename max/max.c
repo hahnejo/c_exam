@@ -1,26 +1,29 @@
 #include <stdio.h>
 
-int		max(int* tab, unsigned int len)
+int     check_num(int *tab, int current)
 {
-    int max;
-    int i;
-    unsigned int iter;
+    int i = 0;
+    int res;
 
-    if (!tab)
-        return (0);
-    i = 0;
-    max = 0;
-    iter = 0;
-    while (iter <= len)
+    while (i < current)
     {
-        // if current is bigger than next
-        // current becomes max
-        // 
-        if (tab[i] > tab[i + 1])
-            max = tab[i];
+        if (tab[i] > tab[current])
+            res = tab[i];
         i++;
     }
-    // printf("%d\n", max);
+    return (res);
+}
+
+int		max(int *tab, unsigned int len)
+{
+    int i;
+
+    i = 0;
+    while (tab[i])
+    {
+        max = check_num(tab, i);
+        i++;
+    }
     return (max);
 }
 
