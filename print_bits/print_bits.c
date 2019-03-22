@@ -1,34 +1,26 @@
-// takes a byte and prints in binary
-
-// void    print_bits(unsigned char octet)
-// {
-//     write(1, &oct)
-// }
-
-#include <stdio.h>
 #include <unistd.h>
 
-int main()
+void    print_bits(unsigned char octet)
 {
-    char octet = ;
-    int oct;
-    int divi = 128;
-
-    oct = octet;
-    while (divi != 0)
+    int num;
+    
+    num = 128;
+    while (num != 0)
     {
-        if (divi <= octet)
-            oct %= divi;
+        if (octet >= num)
+        {
+            octet -= num;
+            write(1, "1", 1);
+        }
         else
             write(1, "0", 1);
+        num = num / 2;
     }
-    divi /= 2;
-    // while division is not 0
-    // if division is less than octet
-    // octet = octet modulo division
-    // else print out only zero
-    // division / 2 and save it to div
 }
 
-2 = 0000 0010
-8 = 0000 1000
+int     main()
+{
+    unsigned char octet = 42;
+    print_bits(octet);
+    return (0);
+}
